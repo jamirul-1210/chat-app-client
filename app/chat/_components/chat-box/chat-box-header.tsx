@@ -17,7 +17,7 @@ export function ChatBoxHeader() {
       <div className="relative flex-shrink-0">
         <Avatar>
           <AvatarImage
-            src={`${BACKEND_BASE_URL}/assets/${selectedChat?.members[0].avatar}`}
+            src={selectedChat?.members[0].avatar ? `${BACKEND_BASE_URL}/assets/${selectedChat?.members[0].avatar}`:'#'}
             alt={`profile image of ${selectedChat?.members[0].name}`}
           />
           <AvatarFallback>{getInitials(selectedChat?.members[0].name || '')}</AvatarFallback>

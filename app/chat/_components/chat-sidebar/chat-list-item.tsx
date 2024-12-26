@@ -25,7 +25,14 @@ export function ChatListItem({ chat }: ChatListItemProps) {
     >
       <div className="relative flex-shrink-0">
         <Avatar>
-          <AvatarImage src={`${BACKEND_BASE_URL}/assets/${chat.members[0]?.avatar}`} alt="profile image" />
+          <AvatarImage
+            src={
+              chat.members[0]?.avatar
+                ? `${BACKEND_BASE_URL}/assets/${chat.members[0]?.avatar}`
+                : "#"
+            }
+            alt="profile image"
+          />
           <AvatarFallback>{getInitials(chat.members[0].name)}</AvatarFallback>
         </Avatar>
         {isOnline(new Date(chat.members[0].lastSeen)) && (
@@ -62,7 +69,13 @@ export function ChatListItem({ chat }: ChatListItemProps) {
           {chat.messages && chat.messages?.[0]?.senderId === authState.user?.id
             ? "you : "
             : ""}
-            {chat.messages?.[0]?.content ? chat.messages?.[0]?.content : (<span className="dark:text-gray-500 font-normal text-gray-700">No messages yet</span>)}
+          {chat.messages?.[0]?.content ? (
+            chat.messages?.[0]?.content
+          ) : (
+            <span className="dark:text-gray-500 font-normal text-gray-700">
+              No messages yet
+            </span>
+          )}
         </p>
       </div>
     </div>
