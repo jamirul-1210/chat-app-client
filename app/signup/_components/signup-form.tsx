@@ -12,7 +12,6 @@ import {
   AUTH_USER_KEY_NAME,
   BACKEND_BASE_URL,
 } from "@/lib/constants";
-import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
 import {
   signupSchema,
@@ -192,13 +191,13 @@ export function SignupForm() {
         />
         <Label htmlFor="terms" className="text-sm">
           I agree to the{" "}
-          <Link className="text-primary underline" href={"/terms"}>
+          <a className="text-primary underline" target="_blank" href={"/terms"}>
             Terms
-          </Link>{" "}
+          </a>{" "}
           and{" "}
-          <Link className="text-primary underline" href={"/terms"}>
+          <a className="text-primary underline" target="_blank" href={"/terms"}>
             Conditions
-          </Link>
+          </a>
         </Label>
       </div>
       {errors.agreeToTerms && (
