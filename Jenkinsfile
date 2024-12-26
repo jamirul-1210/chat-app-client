@@ -15,7 +15,6 @@ pipeline {
         GITHUB_CREDENTIALS_ID = 'github-credentials'
         SSH_CREDENTIALS_ID = 'remote-server-credentials'
         DOCKER_CREDENTIALS_ID = 'dockerhub-credentials'
-        BACKEND_URL = 'https://chat-api.jamirul.site'
         REMOTE_HOST = 'ubuntu@ec2-43-204-236-250.ap-south-1.compute.amazonaws.com'   
     }
     
@@ -52,7 +51,7 @@ pipeline {
 
         stage('Docker: Build Docker Image') {
             steps {
-                sh "docker build --build-arg NEXT_PUBLIC_BACKEND_BASE_URL=${BACKEND_URL} -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker build -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
